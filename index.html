@@ -134,43 +134,63 @@
     </div>
   </section>
 
-  <!-- Gallery -->
-  <section id="gallery" class="py-24 bg-[#F8F4F0]">
-    <div class="max-w-7xl mx-auto px-6">
-      <h3 class="text-4xl font-light text-center mb-16">Gallery</h3>
-      <div class="grid grid-cols-2 md:grid-cols-3 gap-6">
-        <img src="WhatsApp Image 2026-05-24 at 00.25.10 (1).jpeg" 
-             class="rounded-4xl aspect-square object-cover shadow-md hover:shadow-xl transition" alt="Anshy">
-        <img src="WhatsApp Image 2026-05-24 at 00.25.10 (2).jpeg" 
-             class="rounded-4xl aspect-square object-cover shadow-md hover:shadow-xl transition" alt="Anshy">
-        <img src="WhatsApp Image 2026-05-24 at 00.25.10 (3).jpeg" 
-             class="rounded-4xl aspect-square object-cover shadow-md hover:shadow-xl transition" alt="Anshy">
-        <img src="WhatsApp Image 2026-05-24 at 00.25.10.jpeg" 
-             class="rounded-4xl aspect-square object-cover shadow-md hover:shadow-xl transition" alt="Anshy">
-        <img src="WhatsApp Image 2026-05-24 at 00.25.11 (1).jpeg" 
-             class="rounded-4xl aspect-square object-cover shadow-md hover:shadow-xl transition" alt="Anshy">
-        <img src="WhatsApp Image 2026-05-24 at 00.25.11 (2).jpeg" 
-             class="rounded-4xl aspect-square object-cover shadow-md hover:shadow-xl transition" alt="Anshy">
-        <img src="WhatsApp Image 2026-05-24 at 00.25.11 (3).jpeg" 
-             class="rounded-4xl aspect-square object-cover shadow-md hover:shadow-xl transition" alt="Anshy">
-        <img src="WhatsApp Image 2026-05-24 at 00.25.11.jpeg" 
-             class="rounded-4xl aspect-square object-cover shadow-md hover:shadow-xl transition" alt="Anshy">
-        <img src="WhatsApp Image 2026-05-24 at 00.25.12 (1).jpeg" 
-             class="rounded-4xl aspect-square object-cover shadow-md hover:shadow-xl transition" alt="Anshy">
-        <img src="WhatsApp Image 2026-05-24 at 00.25.12 (2).jpeg" 
-             class="rounded-4xl aspect-square object-cover shadow-md hover:shadow-xl transition" alt="Anshy">
-        <img src="WhatsApp Image 2026-05-24 at 00.25.12 (3).jpeg" 
-             class="rounded-4xl aspect-square object-cover shadow-md hover:shadow-xl transition" alt="Anshy">
-        <img src="WhatsApp Image 2026-05-24 at 00.25.13 (1).jpeg" 
-             class="rounded-4xl aspect-square object-cover shadow-md hover:shadow-xl transition" alt="Anshy">
-        <img src="WhatsApp Image 2026-05-24 at 00.25.13 (2).jpeg" 
-             class="rounded-4xl aspect-square object-cover shadow-md hover:shadow-xl transition" alt="Anshy">
-        <img src="WhatsApp Image 2026-05-24 at 00.25.13.jpeg" 
-             class="rounded-4xl aspect-square object-cover shadow-md hover:shadow-xl transition" alt="Anshy">
-      </div>
-    </div>
-  </section>
+  <script>
+  // Gallery Images Array
+  const images = [
+    "WhatsApp Image 2026-05-24 at 00.25.10 (1).jpeg",
+    "WhatsApp Image 2026-05-24 at 00.25.10 (2).jpeg",
+    "WhatsApp Image 2026-05-24 at 00.25.10 (3).jpeg",
+    "WhatsApp Image 2026-05-24 at 00.25.10.jpeg",
+    "WhatsApp Image 2026-05-24 at 00.25.11 (1).jpeg",
+    "WhatsApp Image 2026-05-24 at 00.25.11 (2).jpeg",
+    "WhatsApp Image 2026-05-24 at 00.25.11 (3).jpeg",
+    "WhatsApp Image 2026-05-24 at 00.25.11.jpeg",
+    "WhatsApp Image 2026-05-24 at 00.25.12 (1).jpeg",
+    "WhatsApp Image 2026-05-24 at 00.25.12 (2).jpeg",
+    "WhatsApp Image 2026-05-24 at 00.25.12 (3).jpeg",
+    "WhatsApp Image 2026-05-24 at 00.25.13 (1).jpeg",
+    "WhatsApp Image 2026-05-24 at 00.25.13 (2).jpeg",
+    "WhatsApp Image 2026-05-24 at 00.25.13.jpeg"
+  ];
 
+  // Populate Gallery
+  function loadGallery() {
+    const grid = document.getElementById('gallery-grid');
+    grid.innerHTML = '';
+
+    images.forEach(src => {
+      const img = document.createElement('img');
+      img.src = src;
+      img.alt = "Anshy";
+      img.className = `rounded-3xl w-full aspect-square object-contain bg-white shadow-md hover:shadow-2xl transition-all duration-300 cursor-pointer border border-violet-100`;
+      img.onclick = () => openLightbox(src);
+      grid.appendChild(img);
+    });
+  }
+
+  // Lightbox Functions
+  function openLightbox(src) {
+    document.getElementById('lightbox-image').src = src;
+    document.getElementById('lightbox').classList.remove('hidden');
+    document.getElementById('lightbox').classList.add('flex');
+  }
+
+  function closeLightbox() {
+    const lightbox = document.getElementById('lightbox');
+    lightbox.classList.add('hidden');
+    lightbox.classList.remove('flex');
+  }
+
+  // Close lightbox when clicking outside image
+  document.getElementById('lightbox').addEventListener('click', function(e) {
+    if (e.target.id === 'lightbox') {
+      closeLightbox();
+    }
+  });
+
+  // Load gallery when page loads
+  window.onload = loadGallery;
+</script>
   <!-- Contact -->
   <section id="contact" class="hero-bg py-24 text-white">
     <div class="max-w-4xl mx-auto px-6 text-center">
